@@ -9,6 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-compile-handlebars": "^0.6.1",
+    "gulp-rename": "^1.2.2",
+    "handlebars": "^4.0.5"
+  },
+  "devDependencies": {
+    "gulp-handlebars-html": "0.0.2",
     "handlebars": "^4.0.5"
   }
 }
