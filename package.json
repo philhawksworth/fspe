@@ -9,13 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "glob": "^7.0.3",
     "gulp": "^3.9.1",
     "gulp-compile-handlebars": "^0.6.1",
+    "gulp-data": "^1.2.1",
+    "gulp-foreach": "^0.1.0",
     "gulp-rename": "^1.2.2",
-    "handlebars": "^4.0.5"
+    "handlebars": "^4.0.5",
+    "gulp-handlebars-html": "0.0.2"
   },
-  "devDependencies": {
-    "gulp-handlebars-html": "0.0.2",
-    "handlebars": "^4.0.5"
+  "scripts": {
+    "build": "node html.js"
   }
 }

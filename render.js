@@ -29,6 +29,8 @@ function returnAPIPath(path){
 // Output some data to the page via a given template
 function renderContent(template, data){
 
+  console.log(template, data);
+
   //source the hbs template
   var hbsTemplate = $("#"+template).html();
 
