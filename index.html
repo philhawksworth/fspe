@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Full Stack Progresseive Enhancement</title>
+  </head>
+  <body>
+    <h1>FSPE - Full Stack Progresseive Enhancement</h1>
+    <p>Enhancing from static pages to SPAs with PE</p>
+    <hr />
+    <h2>navigation</h2>
+    <ul>
+      <li><a href="/home" class="fspe" data-template="page-template">home</a></li>
+      <li><a href="/about" class="fspe" data-template="page-template">about</a></li>
+    </ul>
+    <hr />
+    <div class="content"></div>
+
+    <!--This is our template. -->
+    <!--Data will be inserted in its according place, replacing the brackets.-->
+    <script id="page-template" type="text/x-handlebars-template">
+      <h1>{{title}}</h1>
+      <p>{{description}}</p>
+    </script>
+
+<!--
+
+1. Load temapltes in one go with js
+2. add events handles to navigation to hijack links
+3. abstract data into faux api
+4. render static page versions on server
+5. render dynamic partials in browser via js
+
+ -->
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/handlebars/handlebars.min.js"></script>
+    <script src="render.js"></script>
+  </body>
+</html>
