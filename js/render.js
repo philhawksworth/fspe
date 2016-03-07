@@ -1,3 +1,12 @@
+// var $ = require('jquery');
+var handlebars = require('handlebars');
+var reqwest = require('reqwest');
+var $ = require('jbone');
+
+$.ajax = reqwest.compat;
+
+
+
 function addEventHandlers() {
 
   var dynamicPageLinks = document.querySelectorAll('[data-template]');
@@ -35,7 +44,7 @@ function renderContent(template, data){
   var hbsTemplate = $("#"+template).html();
 
   // Compile the template
-  var compiledTemplate = Handlebars.compile(hbsTemplate);
+  var compiledTemplate = handlebars.compile(hbsTemplate);
 
   // populate the template with data
   var output = compiledTemplate(data);

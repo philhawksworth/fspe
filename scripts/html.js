@@ -16,9 +16,8 @@ handlebars.registerHelper(layouts(handlebars));
 handlebars.registerPartial('base', fs.readFileSync(paths.layouts + 'base.hbs', 'utf8'));
 
 // set up the dist folder
-if (!fs.existsSync(paths.output)){
-    fs.mkdirSync(paths.output);
-}
+ensureFolder(paths.output);
+
 
 
 
@@ -35,7 +34,14 @@ glob("**/*.hbs", {cwd: paths.pages}, function (er, files) {
     var template = handlebars.compile(hbsTemplate);
     var result = template(data);
 
-    // output the resukt to file
+    // ensure that recursive filders exist
+    var filePath = files[i].match(/(.*)\/(.*)/);
+    if(filePath) {
+      ensureFolder(paths.output + filePath[1]);
+    }
+
+
+    // output the result to file
     var outputDest = paths.output + files[i].replace(".hbs",".html");
     var writeStream = fs.createWriteStream(outputDest);
     writeStream.write(result);
@@ -47,3 +53,13 @@ glob("**/*.hbs", {cwd: paths.pages}, function (er, files) {
     );
   }
 });
+
+function ensureFolder(path){
+  console.log("folder needed", path)
+  if (!fs.existsSync(path)){
+    fs.mkdirSync(path);
+  }
+}
+
+
+

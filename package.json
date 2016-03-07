@@ -7,6 +7,7 @@
     "env": "env",
     "clean": "rm -r dist",
     "build:html": "node scripts/html.js",
+    "build:js": "webpack",
     "build": "npm run build:html"
   },
   "author": "",
@@ -15,7 +16,11 @@
     "chalk": "^1.1.1",
     "glob": "^7.0.3",
     "handlebars": "^4.0.5",
-    "handlebars-layouts": "^3.1.3"
+    "handlebars-layouts": "^3.1.3",
+    "jbone": "^1.1.2",
+    "jquery": "^2.2.1",
+    "reqwest": "^2.0.5",
+    "webpack": "^1.12.14"
   },
   "devDependencies": {
     "handlebars-helpers": "^0.5.8"
