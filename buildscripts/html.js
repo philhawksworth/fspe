@@ -10,15 +10,15 @@ var chalk = require('chalk');
 
 
 var paths = {
-  api : "api/",
-  pages : "pages/",
+  api : "src/api/",
+  pages : "src/pages/",
   output : "dist/",
-  layouts : "templates/layouts/"
+  layouts : "src/templates/layouts/"
 }
 
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));
-handlebars.registerPartial('base', fs.readFileSync(paths.layouts + 'base.hbs', 'utf8'));
+handlebars.registerPartial('base', fs.readFileSync( paths.layouts + 'base.hbs', 'utf8'));
 
 // set up the dist folder
 ensureFolder(paths.output);

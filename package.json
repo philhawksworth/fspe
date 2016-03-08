@@ -7,9 +7,9 @@
     "env": "env",
     "clean": "rm -r dist",
     "prebuild": "npm run clean",
-    "postbuild": "cp -R api dist/api",
+    "postbuild": "cp -R src/api dist/api",
     "build:html": "node buildscripts/html.js",
-    "build:js": "browserify -t hbsfy js/render.js > dist/fspe.js",
+    "build:js": "browserify -t hbsfy src/js/render.js > dist/fspe.js",
     "build": "npm run build:html && npm run build:js"
   },
   "author": "Phil Hawksworht",
