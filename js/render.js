@@ -1,7 +1,14 @@
-// var $ = require('jquery');
-var handlebars = require('handlebars');
+
+var handlebars  = require('hbsfy/runtime');
 var reqwest = require('reqwest');
 var $ = require('jbone');
+
+// required a module which lists ALL templates
+// apply the templates progamatically via their name
+
+// remove webpack
+// prune npm
+
 
 $.ajax = reqwest.compat;
 
@@ -11,22 +18,25 @@ function addEventHandlers() {
 
   var dynamicPageLinks = document.querySelectorAll('[data-template]');
 
-  $(dynamicPageLinks).click(function(e){
+  $(dynamicPageLinks).on("click", function(e){
     e.preventDefault();
     var dataSource = returnAPIPath(e.target.pathname);
     var template = e.target.getAttribute("data-template");
-    $.get(dataSource, function( data ) {
-      renderContent(template, data);
+    reqwest(dataSource, function (resp) {
+      renderContent(template, resp);
       setAddress(e.target.pathname);
-    }, "json" );
+    })
   });
 
 };
 
 function setAddress(path){
-  var stateObj = { foo: "bar" };
-  history.pushState(stateObj, null, path);
+  history.pushState({}, null, path + ".html");
 }
+
+// todo add popstate to manage browser history button usage
+
+
 
 
 // Determine the api path from the hijcked link's href
@@ -41,13 +51,14 @@ function renderContent(template, data){
   console.log(template, data);
 
   //source the hbs template
-  var hbsTemplate = $("#"+template).html();
+  // var hbsTemplate = $("#"+template).html();
 
   // Compile the template
-  var compiledTemplate = handlebars.compile(hbsTemplate);
+  // var compiledTemplate = handlebars.compile(hbsTemplate);
+  var t = require("../templates/page-template.hbs");
 
   // populate the template with data
-  var output = compiledTemplate(data);
+  var output = t(data);
 
   // add output to the page
   $('.content').html(output);
@@ -55,13 +66,9 @@ function renderContent(template, data){
 };
 
 
-
+// let's go!
 $(function () {
-
-
   addEventHandlers();
-
-
 });
 
 

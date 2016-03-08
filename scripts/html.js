@@ -4,6 +4,10 @@ var glob = require("glob");
 var fs = require('fs');
 var chalk = require('chalk');
 
+
+
+
+
 var paths = {
   api : "api/",
   pages : "pages/",
@@ -40,7 +44,6 @@ glob("**/*.hbs", {cwd: paths.pages}, function (er, files) {
       ensureFolder(paths.output + filePath[1]);
     }
 
-
     // output the result to file
     var outputDest = paths.output + files[i].replace(".hbs",".html");
     var writeStream = fs.createWriteStream(outputDest);
@@ -51,15 +54,26 @@ glob("**/*.hbs", {cwd: paths.pages}, function (er, files) {
       chalk.green("File created:"),
       outputDest
     );
+
   }
 });
 
+
+// creater a folder if it does not already exist
 function ensureFolder(path){
-  console.log("folder needed", path)
   if (!fs.existsSync(path)){
     fs.mkdirSync(path);
   }
 }
 
+
+
+
+
+require.extensions['.hbs'] = function (module, filename) {
+  var file = fs.readFileSync(filename, "utf8");
+  var opts = { traverse: true };
+  return module._compile(hbsfy.compile(file, opts), filename);
+};
 
 

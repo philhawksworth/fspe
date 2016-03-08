@@ -1,22 +1,26 @@
 {
   "name": "fspe",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full stack progressive enhancement pattern",
   "main": "index.js",
   "scripts": {
     "env": "env",
     "clean": "rm -r dist",
+    "prebuild": "npm run clean",
+    "postbuild": "cp -R api dist/api",
     "build:html": "node scripts/html.js",
-    "build:js": "webpack",
-    "build": "npm run build:html"
+    "build:js": "browserify -t hbsfy js/render.js > dist/fspe.js",
+    "build": "npm run build:html && npm run build:js"
   },
-  "author": "",
+  "author": "Phil Hawksworht",
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.1",
     "glob": "^7.0.3",
     "handlebars": "^4.0.5",
     "handlebars-layouts": "^3.1.3",
+    "handlebars-loader": "^1.1.4",
+    "hbsfy": "^2.5.1",
     "jbone": "^1.1.2",
     "jquery": "^2.2.1",
     "reqwest": "^2.0.5",
@@ -24,5 +28,10 @@
   },
   "devDependencies": {
     "handlebars-helpers": "^0.5.8"
+  },
+  "browserify": {
+    "transform": [
+      "hbsfy"
+    ]
   }
 }
