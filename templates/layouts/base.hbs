@@ -2,6 +2,37 @@
 <html>
   <head>
     <title>Full Stack Progresseive Enhancement</title>
+    <style>
+
+    @-webkit-keyframes fade-in-content {
+      from {
+        opacity: 0;
+        left: -500px;
+      }
+      to {
+        opacity: 1;
+        left: 0;
+      }
+    }
+    @keyframes fade-in-content {
+      from {
+        opacity: 0;
+        top: 30px;
+      }
+      to {
+        opacity: 1;
+        top: 0;
+      }
+    }
+    .loading .content {
+      position: relative;
+      -webkit-animation: fade-in-content 0.5s ease;
+              animation: fade-in-content 0.5s ease;
+    }
+
+
+
+    </style>
   </head>
   <body>
     <h1>FSPE - Full Stack Progresseive Enhancement</h1>
@@ -9,9 +40,9 @@
     <hr />
     <h2>navigation</h2>
     <ul>
-      <li><a href="/home" class="fspe" data-template="pageTemplate">home</a></li>
-      <li><a href="/about" class="fspe" data-template="pageTemplate">about</a></li>
-      <li><a href="/message" class="fspe" data-template="messageTemplate">message</a></li>
+      <li><a href="/home.html" class="fspe" data-template="pageTemplate">home</a></li>
+      <li><a href="/about.html" class="fspe" data-template="pageTemplate">about</a></li>
+      <li><a href="/message.html" class="fspe" data-template="messageTemplate">message</a></li>
     </ul>
     <hr />
     <div class="content">

@@ -1,3 +1,7 @@
+/*
+  Perform build-time generation of static html pages.
+*/
+
 var handlebars = require('handlebars');
 var layouts = require('handlebars-layouts');
 var glob = require("glob");
@@ -57,14 +61,12 @@ glob("**/*.hbs", {cwd: paths.pages}, function (er, files) {
 });
 
 
-// creater a folder if it does not already exist
+// create a folder if it does not already exist
 function ensureFolder(path){
   if (!fs.existsSync(path)){
     fs.mkdirSync(path);
   }
 }
-
-
 
 
 require.extensions['.hbs'] = function (module, filename) {

@@ -2,6 +2,7 @@
 var handlebars  = require('hbsfy/runtime');
 var reqwest = require('reqwest');
 var $ = require('jbone');
+$.ajax = reqwest.compat;
 
 // list ALL templates
 var templates = {
@@ -10,19 +11,21 @@ var templates = {
 };
 
 
-// prune npm
-
-
-$.ajax = reqwest.compat;
-
-
-
 function addEventHandlers() {
+
+
 
   var dynamicPageLinks = document.querySelectorAll('[data-template]');
 
   $(dynamicPageLinks).on("click", function(e){
     e.preventDefault();
+
+    // tell the page that a content transition is happening
+    $('body').addClass('loading');
+    $('body .content')[0].addEventListener("animationend", function(e){
+        $('body').removeClass('loading');
+    }, false);
+
     var dataSource = returnAPIPath(e.target.pathname);
     var template = e.target.getAttribute("data-template");
     reqwest(dataSource, function (resp) {
@@ -34,7 +37,7 @@ function addEventHandlers() {
 };
 
 function setAddress(path){
-  history.pushState({}, null, path + ".html");
+  history.pushState({}, null, path);
 }
 
 // todo add popstate to manage browser history button usage
@@ -44,7 +47,7 @@ function setAddress(path){
 
 // Determine the api path from the hijcked link's href
 function returnAPIPath(path){
-  return "/api" + path + ".json";
+  return "/api" + path.replace(".html", ".json");
 }
 
 
@@ -58,6 +61,9 @@ function renderContent(template, data){
 
   // add output to the page
   $('.content').html(output);
+
+  // tell the page that loading has completed
+  // $('body').removeClass('loading');
 };
 
 
