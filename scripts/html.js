@@ -8,13 +8,13 @@ var glob = require("glob");
 var fs = require('fs');
 var chalk = require('chalk');
 
-
 var paths = {
   api : "src/api/",
   pages : "src/pages/",
   output : "dist/",
   layouts : "src/templates/layouts/"
 }
+
 
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));

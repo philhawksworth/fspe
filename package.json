@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "env": "env",
-    "clean": "rm -r dist",
+    "clean": "rm -rf dist/*",
     "prebuild": "npm run clean",
     "postbuild": "cp -R src/api dist/api",
-    "build:html": "node buildscripts/html.js",
+    "build:html": "node scripts/html.js",
     "build:js": "browserify -t hbsfy src/js/render.js > dist/fspe.js",
-    "build": "npm run build:html && npm run build:js"
+    "build": "npm run build:html && npm run build:js",
+    "serve": "node ./node_modules/static-server/bin/static-server.js dist"
   },
   "author": "Phil Hawksworht",
   "license": "ISC",
@@ -23,7 +24,8 @@
     "handlebars-loader": "^1.1.4",
     "hbsfy": "^2.5.1",
     "jbone": "^1.1.2",
-    "reqwest": "^2.0.5"
+    "reqwest": "^2.0.5",
+    "static-server": "^2.0.1"
   },
   "devDependencies": {
     "handlebars-helpers": "^0.5.8"
