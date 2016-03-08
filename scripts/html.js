@@ -5,9 +5,6 @@ var fs = require('fs');
 var chalk = require('chalk');
 
 
-
-
-
 var paths = {
   api : "api/",
   pages : "pages/",
@@ -23,8 +20,9 @@ handlebars.registerPartial('base', fs.readFileSync(paths.layouts + 'base.hbs', '
 ensureFolder(paths.output);
 
 
-
-
+/*
+ generate the static html pages found in the Pages directory
+*/
 glob("**/*.hbs", {cwd: paths.pages}, function (er, files) {
 
   for (var i = 0; i < files.length; i++) {
@@ -65,7 +63,6 @@ function ensureFolder(path){
     fs.mkdirSync(path);
   }
 }
-
 
 
 

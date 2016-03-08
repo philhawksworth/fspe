@@ -3,10 +3,13 @@ var handlebars  = require('hbsfy/runtime');
 var reqwest = require('reqwest');
 var $ = require('jbone');
 
-// required a module which lists ALL templates
-// apply the templates progamatically via their name
+// list ALL templates
+var templates = {
+  pageTemplate : require("../templates/page-template.hbs"),
+  messageTemplate : require("../templates/message-template.hbs"),
+};
 
-// remove webpack
+
 // prune npm
 
 
@@ -50,19 +53,11 @@ function renderContent(template, data){
 
   console.log(template, data);
 
-  //source the hbs template
-  // var hbsTemplate = $("#"+template).html();
-
-  // Compile the template
-  // var compiledTemplate = handlebars.compile(hbsTemplate);
-  var t = require("../templates/page-template.hbs");
-
   // populate the template with data
-  var output = t(data);
+  var output = templates[template](data);
 
   // add output to the page
   $('.content').html(output);
-
 };
 
 
