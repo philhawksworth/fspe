@@ -3,13 +3,9 @@
   javascript delivered to the browser for client-site template rendering support.
 */
 
-module.export = {
+module.exports = {
 
   pageTemplate : require("./page-template.hbs")
 
 };
 
-
-// var templates = {
-//   pageTemplate : require("../templates/page-template.hbs")
-// };

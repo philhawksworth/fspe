@@ -12,13 +12,15 @@ var paths = {
   api : "src/api/",
   pages : "src/pages/",
   output : "dist/",
-  layouts : "src/templates/layouts/"
+  layouts : "src/templates/layouts/",
+  partials : "src/templates/partials/"
 }
 
 
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));
 handlebars.registerPartial('base', fs.readFileSync( paths.layouts + 'base.hbs', 'utf8'));
+handlebars.registerPartial('navigation', fs.readFileSync( paths.partials + 'navigation.hbs', 'utf8'));
 
 // set up the dist folder
 ensureFolder(paths.output);

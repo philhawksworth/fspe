@@ -22,7 +22,7 @@ Builds output a static site to the `/dist` folder.
 
 Build the entire project by using npm with the command `npm run build`, this also purges the `/dist` folder.
 
-More granular build control is available via:
+More granular build control is availa ble via:
 - `npm run build:html` to compile the static html files
 - `npm run build:js` to compile the javascript and handlebars templates for client-side rendering
 

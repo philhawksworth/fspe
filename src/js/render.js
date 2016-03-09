@@ -4,7 +4,9 @@ var reqwest = require('reqwest');
 var $ = require('jbone');
 $.ajax = reqwest.compat;
 
+
 // list ALL templates
+// TODO : Automate this so that it is generated from the list of templates found in the directory
 var templates = {
   pageTemplate : require("../templates/page-template.hbs"),
   messageTemplate : require("../templates/message-template.hbs"),
@@ -12,8 +14,6 @@ var templates = {
 
 
 function addEventHandlers() {
-
-
 
   var dynamicPageLinks = document.querySelectorAll('[data-template]');
 
@@ -53,17 +53,8 @@ function returnAPIPath(path){
 
 // Output some data to the page via a given template
 function renderContent(template, data){
-
-  console.log(template, data);
-
-  // populate the template with data
   var output = templates[template](data);
-
-  // add output to the page
   $('.content').html(output);
-
-  // tell the page that loading has completed
-  // $('body').removeClass('loading');
 };
 
 
