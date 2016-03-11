@@ -1,4 +1,4 @@
 node_modules
-bower_components
-dist
+dist/*
+assets.json
 npm-debug.log

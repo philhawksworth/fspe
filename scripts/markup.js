@@ -55,7 +55,7 @@ glob("**/*.hbs", {cwd: paths.pages}, function (er, files) {
     writeStream.end();
 
     console.log(
-      chalk.green("File created:"),
+      chalk.grey("  compiled"),
       outputDest
     );
 

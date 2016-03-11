@@ -8,27 +8,29 @@
     "clean": "rm -rf dist/*",
     "prebuild": "npm run clean",
     "postbuild": "cp -R src/api dist/api",
-    "build:html": "node scripts/html.js",
+    "build:html": "node scripts/markup.js",
     "build:js": "browserify -t hbsfy src/js/render.js > dist/fspe.js",
-    "build": "npm run build:html && npm run build:js",
+    "build:css": "stylus src/styles/main.styl -m -o dist/ && hashmark -s -l 8 -m assets.json dist/main.css 'dist/{name}{hash}{ext}'",
+    "build": "npm run build:html && npm run build:js && npm run build:css",
     "serve": "node ./node_modules/static-server/bin/static-server.js dist"
   },
-  "author": "Phil Hawksworht",
+  "author": "Phil Hawksworth",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "browserify": "^13.0.0",
     "chalk": "^1.1.1",
     "glob": "^7.0.3",
     "handlebars": "^4.0.5",
+    "handlebars-helpers": "^0.5.8",
     "handlebars-layouts": "^3.1.3",
     "handlebars-loader": "^1.1.4",
+    "hashmark": "^3.1.0",
     "hbsfy": "^2.5.1",
     "jbone": "^1.1.2",
+    "minifyify": "^7.3.2",
     "reqwest": "^2.0.5",
-    "static-server": "^2.0.1"
-  },
-  "devDependencies": {
-    "handlebars-helpers": "^0.5.8"
+    "static-server": "^2.0.1",
+    "stylus": "^0.54.0"
   },
   "browserify": {
     "transform": [
