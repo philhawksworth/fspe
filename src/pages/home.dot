@@ -1,0 +1,10 @@
+{{#extend "base"}}
+
+    {{#content "body"}}
+      <h1>{{title}} content</h1>
+      <p>
+        {{ description }}
+      </p>
+    {{/content}}
+
+{{/extend}}

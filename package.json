@@ -8,6 +8,7 @@
     "clean": "rm -rf dist/*",
     "prebuild": "npm run clean",
     "postbuild": "cp -R src/api dist/api",
+    "build:content": "node scripts/content.js",
     "build:html": "node scripts/markup.js",
     "build:js": "browserify -t hbsfy src/js/render.js > dist/fspe.js",
     "build:css": "stylus src/styles/main.styl -m -o dist/ && hashmark -s -l 8 -m assets.json dist/main.css 'dist/{name}{hash}{ext}'",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "chalk": "^1.1.1",
+    "dotify": "^1.1.0",
     "glob": "^7.0.3",
     "handlebars": "^4.0.5",
     "handlebars-helpers": "^0.5.8",
@@ -28,6 +30,8 @@
     "hbsfy": "^2.5.1",
     "jbone": "^1.1.2",
     "minifyify": "^7.3.2",
+    "mkdirp": "^0.5.1",
+    "request": "^2.69.0",
     "reqwest": "^2.0.5",
     "static-server": "^2.0.1",
     "stylus": "^0.54.0"

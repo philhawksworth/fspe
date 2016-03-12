@@ -26,11 +26,11 @@
     <p>Enhancing from static pages to SPAs with PE</p>
     <hr />
     <h2>navigation</h2>
-    {{>navigation}}
+    {{#def.navigation}}
     <hr />
     <div class="content">
-      {{#block "body"}}{{/block}}
+{{=message}}
     </div>
-    <script src="/fspe.js"></script>
+    <script src="fspe.js"></script>
   </body>
 </html>

@@ -20,6 +20,7 @@ var paths = {
 // Register helpers
 handlebars.registerHelper(layouts(handlebars));
 handlebars.registerPartial('base', fs.readFileSync( paths.layouts + 'base.hbs', 'utf8'));
+handlebars.registerPartial('page', fs.readFileSync( paths.layouts + '../page-template.hbs', 'utf8'));
 handlebars.registerPartial('navigation', fs.readFileSync( paths.partials + 'navigation.hbs', 'utf8'));
 
 // set up the dist folder
