@@ -1,7 +1,0 @@
-<ul>
-  <li><a href="/home" class="fspe" data-template="pageTemplate">home</a></li>
-  <li><a href="/about" class="fspe" data-template="pageTemplate">about</a></li>
-  <li><a href="/events/previously" class="fspe" data-template="pageTemplate">events/previously</a></li>
-</ul>
-
-

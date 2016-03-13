@@ -3,12 +3,15 @@
   <p class="intro">
     {{=param.intro}}
   </p>
+  <div class="meta">
+    from content api: <a href="/api/{{=param.slug}}.json">/api/{{=param.slug}}.json</a>
+    and the {{=param.template }} template
+  </div>
 #}}
 
 
 {{##def.footer:param:
   <footer>
-    from content api: <a href="/api/{{=param.slug}}.json">/api/{{=param.slug}}.json</a>
-    and the {{=param.template }} template
+    footer content: {{=param.content }}
   </footer>
 #}}

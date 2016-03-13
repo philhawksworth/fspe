@@ -26,6 +26,11 @@ utils.ensureFolder(paths.output);
 */
 function generatePagesFromApi() {
 
+  console.log(
+    chalk.blue("\n  baking pages from API data")
+  );
+
+
   for(var p in pages){
 
     // get the data from the corresponding api source

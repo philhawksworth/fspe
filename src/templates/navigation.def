@@ -1,5 +1,5 @@
 <ul>
-  <li><a href="/home" class="fspe" data-template="main">home</a></li>
-  <li><a href="/about" class="fspe" data-template="main">about</a></li>
-  <li><a href="/events/previously" class="fspe" data-template="main">events/previously</a></li>
+  <li><a href="/home" class="fspe" data-template="body">home</a></li>
+  <li><a href="/about" class="fspe" data-template="body">about</a></li>
+  <li><a href="/events/previously" class="fspe" data-template="body">events/previously</a></li>
 </ul>

@@ -12,7 +12,7 @@ var paths = require("../../scripts/config.js").paths;
 var templates = {
   main : require("../templates/main.js"),
   listing : require("../templates/listing.js"),
-  body : require("../templates/partial_body.js")
+  partial : require("../templates/partial_body.js")
 };
 
 
@@ -55,7 +55,8 @@ function returnAPIPath(path){
 
 // Output some data to the page via a given template
 function renderContent(template, data){
-  var output = templates[template](data);
+  // var output = require("../templates/partial_body.js")[template](data);
+  var output = templates['partial']['body'](data);
   $('.content').html(output);
 };
 
