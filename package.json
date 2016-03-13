@@ -9,10 +9,11 @@
     "prebuild": "npm run clean",
     "postbuild": "cp -R src/api dist/api",
     "build:content": "node scripts/content.js",
-    "build:html": "node scripts/markup.js",
+    "build:html": "node scripts/markup-dot.js",
     "build:js": "browserify -t hbsfy src/js/render.js > dist/fspe.js",
+    "build:jsdot": "browserify src/js/client-render.js | uglifyjs > dist/main.js",
     "build:css": "stylus src/styles/main.styl -m -o dist/ && hashmark -s -l 8 -m assets.json dist/main.css 'dist/{name}{hash}{ext}'",
-    "build": "npm run build:html && npm run build:js && npm run build:css",
+    "build": "npm run build:html && npm run build:jsdot && npm run build:css",
     "serve": "node ./node_modules/static-server/bin/static-server.js dist"
   },
   "author": "Phil Hawksworth",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "chalk": "^1.1.1",
+    "dot": "^1.0.3",
     "dotify": "^1.1.0",
     "glob": "^7.0.3",
     "handlebars": "^4.0.5",
@@ -34,7 +36,8 @@
     "request": "^2.69.0",
     "reqwest": "^2.0.5",
     "static-server": "^2.0.1",
-    "stylus": "^0.54.0"
+    "stylus": "^0.54.0",
+    "uglify-js": "^2.6.2"
   },
   "browserify": {
     "transform": [

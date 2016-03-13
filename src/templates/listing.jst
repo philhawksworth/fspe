@@ -1,3 +1,5 @@
+{{#def.partial_body}}
+
 <!doctype html>
 <html>
   <head>
@@ -9,11 +11,14 @@
     <p>Enhancing from static pages to SPAs with PE</p>
     <hr />
     <h2>navigation</h2>
-    {{>navigation}}
+    {{#def.navigation}}
+    <hr />
+    <em>(listing.jst)</em>
     <hr />
     <div class="content">
-      {{#block "body"}}{{/block}}
+    {{#def.body:it}}
     </div>
-    <script src="/fspe.js"></script>
+    <script src="/main.js"></script>
   </body>
 </html>
+

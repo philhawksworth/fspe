@@ -2,3 +2,4 @@ node_modules
 dist/*
 assets.json
 npm-debug.log
+src/templates/*.js

@@ -1,0 +1,14 @@
+{{##def.body:param:
+  <h1>{{=param.title}} content</h1>
+  <p class="intro">
+    {{=param.intro}}
+  </p>
+#}}
+
+
+{{##def.footer:param:
+  <footer>
+    from content api: <a href="/api/{{=param.slug}}.json">/api/{{=param.slug}}.json</a>
+    and the {{=param.template }} template
+  </footer>
+#}}

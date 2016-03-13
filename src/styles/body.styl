@@ -1,7 +1,23 @@
 body {
     margin: 0;
-    padding: 0;
-    background: #c3bdb3;
-    color: #334;
+    padding: 20px;
+    background: #fff;
+    color: #222;
     font-family: sans-serif;
+}
+
+@keyframes fade-in-content {
+  from {
+    opacity: 0;
+    top: 30px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+.loading .content {
+  position: relative;
+  -webkit-animation: fade-in-content 0.5s ease;
+          animation: fade-in-content 0.5s ease;
 }
