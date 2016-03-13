@@ -1,15 +1,22 @@
 
+var fs  = require('fs');
 var handlebars  = require('hbsfy/runtime');
+var layouts = require('handlebars-layouts');
 var reqwest = require('reqwest');
 var $ = require('jbone');
 $.ajax = reqwest.compat;
 
+var paths = require("../../scripts/config.js").paths;
+
+handlebars.registerHelper(layouts(handlebars));
+handlebars.registerPartial('base', fs.readFileSync( paths.layouts + 'base.hbs', 'utf8'));
 
 // list ALL templates
 // TODO : Automate this so that it is generated from the list of templates found in the directory
 var templates = {
   pageTemplate : require("../templates/page-template.hbs"),
-  messageTemplate : require("../templates/message-template.hbs"),
+  main : require("../templates/main.hbs"),
+  listing : require("../templates/listing.hbs"),
 };
 
 
@@ -26,10 +33,14 @@ function addEventHandlers() {
         $('body').removeClass('loading');
     }, false);
 
-    var dataSource = returnAPIPath(e.target.pathname);
-    var template = e.target.getAttribute("data-template");
+    var dataSource = returnAPIPath(e.target.pathname + ".json");
+      // var template = e.target.getAttribute("data-template");
+
+
+
     reqwest(dataSource, function (resp) {
-      renderContent(template, resp);
+      console.log(resp.template);
+      renderContent(resp.template, resp);
       setAddress(e.target.pathname);
     })
   });

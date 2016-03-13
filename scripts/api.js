@@ -18,11 +18,12 @@ var content_url = contentful.root +
     contentful.access_token;
 
 
-function getPagesData(){
 
-  //set the search attribites on the content url
+function getPageData(){
+
+  //set the searhc attribites on the content url
   var url = content_url + "&content_type=page";
-  console.log(chalk.grey("  getting pages data:"), url, "\n");
+  console.log(chalk.grey("  getting pages data:"), url);
 
   request(url, function (error, response, body) {
 
@@ -32,19 +33,21 @@ function getPagesData(){
     for (var i = 0; i < content.items.length; i++) {
 
       var thisItem = content.items[i];
+
+
       var apiData = JSON.stringify(thisItem.fields);
-      var path = thisItem.fields.slug
-      var levels = path.split("/");
+      var folder = thisItem.fields.slug
+      var levels = folder.split("/");
 
       // if the slug is not root, make sure subdirectories exist
       if(levels.length > 1 ) {
-        var last = path.lastIndexOf('/');
-        var folder =  path.substr(0, last)
-        utils.ensureFolder(paths.api + folder);
+        var i = folder.lastIndexOf('/');
+        var name =  folder.substr(0, i)
+        utils.ensureFolder(paths.api + name);
       }
 
       // output the result to file
-      var outputDest = paths.api + path + ".json";
+      var outputDest = paths.api + folder + ".json";
       var writeStream = fs.createWriteStream(outputDest);
       writeStream.write(apiData);
       writeStream.end();
@@ -60,16 +63,14 @@ function getPagesData(){
 
     }
 
-
-
     // output a sitemap file
-    outputDest = paths.api + "_sitemap.js";
+    outputDest = paths.api + "_sitemap.json";
     writeStream = fs.createWriteStream(outputDest);
-    writeStream.write("module.exports = " + JSON.stringify(sitemap));
+    writeStream.write(JSON.stringify(sitemap));
     writeStream.end();
 
     console.log(
-      chalk.grey("\n  sitemap created:"),
+      chalk.grey("  sitemap created:"),
       outputDest
     );
 
@@ -78,7 +79,8 @@ function getPagesData(){
 
 }
 
-getPagesData();
+
+getPageData();
 
 
 
