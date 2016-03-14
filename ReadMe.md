@@ -45,9 +45,9 @@ Build the entire project by using npm with the command `npm run build`, this als
 More granular build control is available via:
 - `npm run build:api` to source the content from the cloud CMS and create a local cache of content APIs to build from
 - `npm run build:local` to compile the following build tasks based on the cached content api
-- `npm run build:html` to compile the static html files
-- `npm run build:js` to compile the javascript and dotjs templates for client-side rendering
-- `npm run build:css` to compile the styuls files into css
+  - `npm run build:html` to compile the static html files
+  - `npm run build:js` to compile the javascript and dotjs templates for client-side rendering
+  - `npm run build:css` to compile the styuls files into css
 
 
 ## Content API
