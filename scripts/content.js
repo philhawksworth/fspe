@@ -11,7 +11,7 @@ var content_url = cms.root +
     "/entries/?access_token=" +
     cms.access_token;
 
-(function(){
+function getPages(){
 
   //set the search attribites on the content url
   var url = content_url + "&content_type=page";
@@ -64,4 +64,41 @@ var content_url = cms.root +
 
   });
 
-}());
+};
+
+
+function getEvents(){
+
+  //set the search attribites on the content url
+  var url = content_url + "&content_type=event&include=1";
+  console.log(chalk.grey("  getting events data:"), url, "\n");
+
+  request(url, function (error, response, body) {
+
+    var content = JSON.parse(body);
+
+
+    console.log(chalk.blue(JSON.stringify(content)));
+
+    for (var i = 0; i < content.items.length; i++) {
+      var thisItem = content.items[i];
+      console.log(thisItem.fields);
+    }
+
+    for (var entry in content.includes) {
+      var thisEntry = content.includes[entry];
+
+      for (var act in thisEntry) {
+        console.log(chalk.red("act:" + JSON.stringify(thisEntry[act].fields)) );
+      }
+
+    }
+
+  });
+
+}
+
+
+getPages();
+// getEvents();
+

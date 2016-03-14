@@ -19,32 +19,46 @@ function addEventHandlers() {
 
   $(dynamicPageLinks).on("click", function(e){
     e.preventDefault();
-
-    // tell the page that a content transition is happening
-    $('body').addClass('loading');
-    $('body .content')[0].addEventListener("animationend", function(e){
-        $('body').removeClass('loading');
-        $('body').trigger("loaded");
-    }, false);
-
-    // get data from the api and render it
-    var dataSource = returnAPIPath(e.target.pathname + ".json");
-    reqwest(dataSource, function (resp) {
-      renderContent(resp.template, resp);
-      setAddress(e.target.pathname);
-    })
+    loadPage(e.target.pathname);
+    setAddress(e.target.pathname);
   });
 
+  // perform client-side content render for browser history navigation
+  window.onpopstate = function(event) {
+    loadPage(event.state.path);
+  };
 
   $('body').on("loaded", function(e){
     console.log("content loaded");
   });
 
+};
+
+
+
+function loadPage(path){
+
+  // tell the page that a content transition is happening
+  $('body').addClass('loading');
+  $('body .content')[0].addEventListener("animationend", function(e){
+      $('body').removeClass('loading');
+      $('body').trigger("loaded");
+  }, false);
+
+  // load the data from the api and render it with a template
+  var dataSource = returnAPIPath(path + ".json");
+  reqwest(dataSource, function (resp) {
+    renderContent(resp.template, resp);
+  })
 
 };
 
+
 function setAddress(path){
-  history.pushState({}, null, path);
+  var stateObject = {
+    path: path
+  };
+  history.pushState(stateObject, null, path);
 }
 
 // todo add popstate to manage browser history button usage
