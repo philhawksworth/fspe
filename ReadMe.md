@@ -47,7 +47,7 @@ More granular build control is available via:
 - `npm run build:local` to compile the following build tasks based on the cached content api
   - `npm run build:html` to compile the static html files
   - `npm run build:js` to compile the javascript and dotjs templates for client-side rendering
-  - `npm run build:css` to compile the styuls files into css
+  - `npm run build:css` to compile the stylus files into css
 
 
 ## Content API
@@ -72,6 +72,7 @@ After building the site, `npm run serve` will run a static web server exposing t
 
 - add support for linked data in content model
 - add support of rendering markdown
+- add a simple data flow diagram to the readme
 - create content cache API to make it easier to build sites with different data models
 - document the development approach
 - build image asset pipeline
