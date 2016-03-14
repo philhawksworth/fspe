@@ -29,7 +29,7 @@ This project aims to provide a site development architecture which enables:
 - npm
 
 
-## installation
+## Installation
 
 Clone the repo and in the project root install dependencies with:
 
@@ -66,14 +66,16 @@ Populate the local API with `npm run build:api`
 
 After building the site, `npm run serve` will run a static web server exposing the contents of the `/dist` output folder.
 
+------
 
+## To do
 
-## Development approach
-
-To build a site on this framework you'll need to follow these conventions:
-
-// todo
-
+- add support for linked data in content model
+- add support of rendering markdown
+- create content cache API to make it easier to build sites with different data models
+- document the development approach
+- build image asset pipeline
+- automate deployments to S3
 
 
 

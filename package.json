@@ -2,6 +2,7 @@
   "name": "fspe",
   "version": "1.0.0",
   "description": "Full stack progressive enhancement pattern",
+  "repository": "https://github.com/philhawksworth/fspe",
   "main": "index.js",
   "scripts": {
     "env": "env",
