@@ -1,11 +1,8 @@
-
-// var fs  = require('fs');
 var reqwest = require('reqwest');
 var $ = require('jbone');
 $.ajax = reqwest.compat;
 
 var paths = require("../../scripts/config.js").paths;
-
 
 // list ALL templates
 // TODO : Automate this so that it is generated from the list of templates found in the directory
@@ -27,6 +24,7 @@ function addEventHandlers() {
     $('body').addClass('loading');
     $('body .content')[0].addEventListener("animationend", function(e){
         $('body').removeClass('loading');
+        $('body').trigger("loaded");
     }, false);
 
     // get data from the api and render it
@@ -36,6 +34,12 @@ function addEventHandlers() {
       setAddress(e.target.pathname);
     })
   });
+
+
+  $('body').on("loaded", function(e){
+    console.log("content loaded");
+  });
+
 
 };
 
@@ -55,7 +59,6 @@ function returnAPIPath(path){
 
 // Output some data to the page via a given template
 function renderContent(template, data){
-  // var output = require("../templates/partial_body.js")[template](data);
   var output = templates['partial']['body'](data);
   $('.content').html(output);
 };
@@ -65,5 +68,4 @@ function renderContent(template, data){
 $(function () {
   addEventHandlers();
 });
-
 
