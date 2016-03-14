@@ -5,7 +5,6 @@ $.ajax = reqwest.compat;
 var paths = require("../../scripts/config.js").paths;
 
 // list ALL templates
-// TODO : Automate this so that it is generated from the list of templates found in the directory
 var templates = {
   main : require("../templates/main.js"),
   listing : require("../templates/listing.js"),
@@ -28,12 +27,7 @@ function addEventHandlers() {
     loadPage(event.state.path);
   };
 
-  $('body').on("loaded", function(e){
-    console.log("content loaded");
-  });
-
 };
-
 
 
 function loadPage(path){
@@ -61,9 +55,6 @@ function setAddress(path){
   history.pushState(stateObject, null, path);
 }
 
-// todo add popstate to manage browser history button usage
-
-
 
 // Determine the api path from the hijcked link's href
 function returnAPIPath(path){
@@ -81,5 +72,6 @@ function renderContent(template, data){
 // let's go!
 $(function () {
   addEventHandlers();
+  perf();
 });
 
