@@ -40,13 +40,14 @@ Clone the repo and in the project root install dependencies with:
 
 Building outputs a static site to the `/dist` folder.
 
-Build the entire project by using npm with the command `npm run build`, this also purges the `/dist` folder.
+Build the entire project by using npm with the command `npm run build`, this also populates the local content API from the cloud CMS and purges the `/dist` folder.
 
 More granular build control is available via:
+- `npm run build:api` to source the content from the cloud CMS and create a local cache of content APIs to build from
+- `npm run build:local` to compile the following build tasks based on the cached content api
 - `npm run build:html` to compile the static html files
 - `npm run build:js` to compile the javascript and dotjs templates for client-side rendering
 - `npm run build:css` to compile the styuls files into css
-- `npm run build:content` to source the content from the cloud CMS and create a local cache of content APIs to build from
 
 
 ## Content API
@@ -56,12 +57,14 @@ Content for use in the templates is intended to be made available to:
 1. The templates which render the static pages in the server.
 2. The browser for inclusion in the site via javascript rendering client-side.
 
-For development purposes, a dummy API is provided to satisfy the example pages. The full build command will also make the API available in the `/dist` folder for serving via the same static server.
+The content is sourced from an online CMS (http://contentful.com) and stored as a local API for more efficient development and also as a cached content API at runtime.
+
+Populate the local API with `npm run build:api`
 
 
 ## Serving
 
-`npm run serve` will run a static web server exposing the contents of the `/dist` output folder.
+After building the site, `npm run serve` will run a static web server exposing the contents of the `/dist` output folder.
 
 
 

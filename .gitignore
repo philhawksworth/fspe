@@ -1,5 +1,6 @@
 node_modules
 dist/*
+src/api/*
 assets.json
 npm-debug.log
 src/templates/*.js
