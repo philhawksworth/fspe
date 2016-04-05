@@ -1,6 +1,8 @@
-# Full Stack Progressive Enhancement
+# ShortStack
 
 An experimental project architecture to provide dynamic client-side rendering with Javascript and server-rendered views all from the same content API and a simple templated static site generator.
+
+The intention is to make the stack of technologies needed for sites that feel "dynamic" a bit shorter.
 
 
 ## Project goals

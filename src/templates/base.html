@@ -1,5 +1,3 @@
-{{#def.partial_body}}
-
 <!doctype html>
 <html>
   <head>
@@ -7,15 +5,17 @@
     <link rel="stylesheet" href="/main.css">
   </head>
   <body>
-    <h1>FSPE - Full Stack Progresseive Enhancement</h1>
+    <h1>ShortStack</h1>
     <p>Enhancing from static pages to SPAs with PE</p>
     <hr />
     <h2>navigation</h2>
-    {{#def.navigation}}
+    {% include "navigation.html" %}
+
     <hr />
     <div class="content">
-    {{#def.body:it}}
+      {% block content %}{% endblock %}
     </div>
+    <script src="/nunjucks.slim.min.js"></script>
     <script src="/main.js"></script>
   </body>
 </html>

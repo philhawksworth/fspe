@@ -1,12 +1,11 @@
 module.exports = {
 
   paths : {
+    root: process.cwd() + "/",
     api : "src/api/",
     pages : "src/pages/",
     output : "dist/",
-    templates : "src/templates/",
-    layouts : "src/templates/layouts/",
-    partials : "src/templates/partials/"
+    templates : "src/templates/"
   },
 
   cms : {

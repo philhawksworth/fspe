@@ -2,15 +2,6 @@ var reqwest = require('reqwest');
 var $ = require('jbone');
 $.ajax = reqwest.compat;
 
-var paths = require("../../scripts/config.js").paths;
-
-// list ALL templates
-var templates = {
-  main : require("../templates/main.js"),
-  listing : require("../templates/listing.js"),
-  partial : require("../templates/partial_body.js")
-};
-
 
 function addEventHandlers() {
 
@@ -64,7 +55,7 @@ function returnAPIPath(path){
 
 // Output some data to the page via a given template
 function renderContent(template, data){
-  var output = templates['partial']['body'](data);
+  var output = nunjucks.render("content.html", data);
   $('.content').html(output);
 };
 
@@ -72,6 +63,5 @@ function renderContent(template, data){
 // let's go!
 $(function () {
   addEventHandlers();
-  perf();
 });
 
